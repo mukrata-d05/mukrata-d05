@@ -1,10 +1,10 @@
-# 👋 สวัสดีครับ · Hi, I'm [ชื่อ-นามสกุล / Your Name]
+# 👋 สวัสดีครับ · Hi, I'm PIYAWAT OUNRUEN
 
 **Data Engineer / Data Analyst** · ทำงานกับข้อมูลจริงในโรงงานผลิตอาหาร ตั้งแต่ดึงข้อมูลจาก ERP และ Google Sheets ไปจนถึง Dashboard ที่ทีมใช้ทุกวัน
 
 **Data Engineer / Data Analyst** working with real operational data at a food manufacturer, from ERP and Google Sheets extraction to dashboards that teams use every day.
 
-📧 [อีเมล / email] · 💼 [LinkedIn] · 📍 [จังหวัด / City], Thailand
+📧 [piyawat.dreamd@gmail.com](mailto:piyawat.dreamd@gmail.com) · 📍 Lamphun, Thailand
 
 > 🔒 **หมายเหตุ:** โปรเจกต์ทั้งหมดเป็นงานภายในองค์กร โค้ดและข้อมูลจริงจึงเก็บเป็นส่วนตัว
 > หน้านี้อธิบายปัญหา วิธีคิด ขั้นตอน และผลลัพธ์ โดยไม่เปิดเผยข้อมูลของบริษัทหรือลูกค้า
