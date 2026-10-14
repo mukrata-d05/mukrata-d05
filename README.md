@@ -40,27 +40,4 @@
 
 ---
 
-## 🧠 วิธีทำงานของผม · How I work
-
-1. **เริ่มจากสำรวจข้อมูลจริงก่อนเขียนกฎ** · **Profile real data before writing rules.**
-   เจอเรื่องที่ไม่มีใครบอก เช่น เลข LOT ซ้ำกันได้ในคนละวันผลิต หรือคอลัมน์ที่ป้ายเขียนว่า "ชิ้น" แต่ตัวเลขจริงเป็น "หีบ"
-   That's how I found things nobody mentioned, like lot numbers reused across production dates, or a "pieces" column that actually held cases.
-2. **กระทบยอดกับตัวเลขที่ผู้ใช้เชื่ออยู่แล้ว** · **Reconcile to numbers users already trust.**
-   ถ้าตัวเลขไม่ตรงกับที่ทีมคุ้นเคย Dashboard ก็ไม่มีใครใช้
-   If the numbers don't match what the team already knows, nobody will use the dashboard.
-3. **ห้ามเดา** ถ้าไม่แน่ใจให้หยุดและบอกเหตุผล · **Never guess.** If unsure, stop and say why.
-   ข้อมูลผิดที่เข้า ERP ไปแล้วแก้ยากกว่าการหยุดถามมาก
-   Bad data in an ERP costs far more to fix than a pause.
-4. **ชี้ให้ถึงแถวที่ต้องแก้** · **Point to the exact row to fix.**
-   ไม่ใช่แค่บอกว่ามีข้อผิดพลาด เพื่อให้แก้ได้ที่ต้นทาง
-   Not just "there's an error", so the error gets fixed at the source.
-5. **รันซ้ำแล้วต้องปลอดภัย** · **Safe to re-run.**
-   ระบบกันข้อมูลซ้ำ และให้สิทธิ์อ่านอย่างเดียวเมื่อไม่จำเป็นต้องเขียน
-   Duplicates are prevented, and access is read-only whenever writing isn't needed.
-6. **ค่าลับไม่อยู่ในโค้ด** · **Secrets stay out of code.**
-   ใช้ไฟล์ตั้งค่าแยก, Secrets ของแพลตฟอร์ม และ Script Properties
-   They live in separate config files, platform secrets and Script Properties.
-
----
-
 <sub>ภาพการไหลของข้อมูลในแต่ละหน้าวาดด้วย Mermaid และแสดงผลบน GitHub ได้โดยตรง · Data-flow diagrams are Mermaid and render directly on GitHub.</sub>
