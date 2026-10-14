@@ -2,7 +2,7 @@
 
 [ภาษาไทย](#ภาษาไทย) · [English](#english)
 
-`Python` `pandas` `openpyxl` `pdfplumber` `Streamlit` `Google Apps Script` `Odoo JSON-RPC`
+`Python` `pandas` `openpyxl` `pdfplumber` `Tesseract OCR` `Streamlit` `Google Apps Script` `Odoo JSON-RPC`
 
 ---
 
@@ -23,9 +23,9 @@
 ```mermaid
 flowchart LR
     A["ไฟล์ PO<br/>Excel / CSV / PDF"] --> B["ตรวจหาว่าเป็นไฟล์ของลูกค้ารายไหน<br/>จากชื่อคอลัมน์"]
-    B --> C["ตัวอ่านเฉพาะลูกค้าแต่ละราย<br/>17 รูปแบบ"]
+    B --> C["ตัวอ่านเฉพาะลูกค้าแต่ละราย<br/>20 รูปแบบ (+OCR)"]
     C --> D["รูปแบบข้อมูลกลาง<br/>Order / Line (หน่วยเดียวกัน)"]
-    M[("ตารางจับคู่<br/>ลูกค้า / จุดส่ง / สินค้า")] --> E
+    M[("ตารางจับคู่ + ราคาขาย<br/>ลูกค้า / จุดส่ง / สินค้า")] --> E
     D --> E{"ตรวจสอบ<br/>ERR / WARN"}
     E -->|ผ่าน| F["Google Sheet<br/>รอส่ง"]
     F -->|คนกดยืนยัน| G["ERP<br/>สร้างใบเสนอราคา"]
@@ -41,14 +41,18 @@ flowchart LR
 | หลักการตรวจ | **ห้ามเดา** ถ้าไม่แน่ใจให้หยุดและบอกเหตุผล | ส่งข้อมูลผิดเข้า ERP แล้วแก้ทีหลังแพงกว่าการหยุดถามมาก |
 | ส่งเข้า ERP | สร้างเป็นใบเสนอราคา ไม่ยืนยันเป็นคำสั่งขายเอง และต้องพิมพ์ "ยืนยัน" ก่อนส่ง | ให้คนเป็นด่านสุดท้ายในทุกขั้นที่แก้ข้อมูลใน ERP |
 | ไฟล์เสีย 1 ไฟล์ | ข้ามไฟล์นั้นพร้อมแจ้งเหตุผล โดยไฟล์อื่นในชุดยังทำงานต่อ | อัปโหลดทีละหลายไฟล์ ไม่ควรล้มทั้งชุด |
+| PDF ที่ตัวอักษรเป็นภาพ | อ่านด้วย OCR แล้วติดคำเตือนให้ตรวจตัวเลขซ้ำทุกครั้ง | OCR อ่านพลาดได้ จึงไม่ปล่อยให้ผ่านแบบเงียบๆ |
+| ใช้งานนอกออฟฟิศ | นำขึ้นเว็บแบบเชิญเฉพาะอีเมล ส่วนการส่งเข้า ERP ทำผ่านสคริปต์บนเซิร์ฟเวอร์ของ Google | ทีมรับ PO และส่งเข้าระบบได้จากทุกที่ โดยข้อมูลราคาไม่หลุดสู่สาธารณะ |
 
 ### สิ่งที่ระบบตรวจ
 - **ERR (ห้ามส่ง):** ไม่พบลูกค้า จุดส่ง หรือบาร์โค้ดในตารางจับคู่ · จำนวนบรรจุไม่ตรง · หน่วยที่ไม่รู้จัก · จำนวนไม่ใช่จำนวนเต็มบวก · **ยอดเงินรายบรรทัดและยอดรวมไม่ตรงกับในไฟล์** (ยอมให้ต่างได้ไม่เกิน 0.05 บาท) · เลข PO ซ้ำ หรือเคยส่งเข้า ERP แล้ว
-- **WARN (ส่งได้แต่ควรดู):** จุดส่งไม่มีใน ERP ให้ใช้ที่อยู่ลูกค้าแทน · เลข PO ไม่สอดคล้องกับรหัสคลังของลูกค้า
+- **WARN (ส่งได้แต่ควรดู):** จุดส่งไม่มีใน ERP ให้ใช้ที่อยู่ลูกค้าแทน · เลข PO ไม่สอดคล้องกับรหัสคลังของลูกค้า · **ราคาต่อหน่วยใน PO ไม่ตรงกับราคาขายที่ตกลงกับห้าง** พร้อมบอกส่วนต่างเป็นบาท · ตัวเลขที่ได้จาก OCR
 - กับดักที่ต้องรู้จักไฟล์จริงถึงจะเจอ เช่น คอลัมน์ที่ป้ายเขียนว่า "ชิ้น" แต่ตัวเลขจริงเป็น "หีบ" และไฟล์ที่แตกแถวตามสาขาจนยอดนับซ้ำ
 
 ### ผลลัพธ์
-- รองรับ **17 รูปแบบไฟล์** จากลูกค้ามากกว่า 10 ราย ทั้ง Excel, CSV และ PDF
+- รองรับ **20 รูปแบบไฟล์** จากลูกค้ามากกว่า 10 ราย ทั้ง Excel, CSV และ PDF (รวม PDF ที่ต้องใช้ OCR)
+- ทดสอบกับไฟล์ PO จริง 35 ใบ ผ่านการตรวจ 31 ใบ อีก 4 ใบถูกหยุดไว้ถูกต้อง (ข้อมูลจับคู่ยังไม่ครบ หรือเป็น PO ที่ส่งไปแล้ว)
+- ใช้งานจริงผ่านเว็บแบบเชิญเฉพาะอีเมล เปิดจากนอกออฟฟิศได้
 - งานพิมพ์ PO ซ้ำๆ เปลี่ยนเป็นอัปโหลด → ตรวจ → กดยืนยัน
 - กัน PO ซ้ำได้ทั้งในชุดที่อัปโหลดพร้อมกัน และกับ PO ที่เคยส่งเข้า ERP ไปแล้ว
 
@@ -74,9 +78,9 @@ The sales team retyped every PO into the ERP as a sales order, which was slow an
 ```mermaid
 flowchart LR
     A["PO files<br/>Excel / CSV / PDF"] --> B["Detect customer<br/>from column signature"]
-    B --> C["Per-format adapters<br/>17 formats"]
+    B --> C["Per-format adapters<br/>20 formats (+OCR)"]
     C --> D["Common model<br/>Order / Line (one unit)"]
-    M[("Mapping table<br/>customer / site / product")] --> E
+    M[("Mapping + price list<br/>customer / site / product")] --> E
     D --> E{"Validate<br/>ERR / WARN"}
     E -->|pass| F["Google Sheet<br/>staging"]
     F -->|human confirms| G["ERP<br/>create quotation"]
@@ -92,14 +96,18 @@ flowchart LR
 | Validation principle | **Never guess.** If unsure, stop and explain | Bad data in the ERP costs far more to fix than a pause |
 | Writing to the ERP | Create quotations only, never confirmed orders, and require typing "confirm" first | A person stays the last gate on every ERP write |
 | One bad file | Skip it with a reason; the rest of the batch continues | A batch upload shouldn't fail as a whole |
+| PDFs with text drawn as images | Read with OCR and always flag the numbers for a second check | OCR can misread, so it never passes silently |
+| Working outside the office | Invite-only web app; ERP writes run in a script on Google's servers | The team can process POs from anywhere without exposing prices publicly |
 
 ### What is validated
 - **ERR (blocked):** unknown customer, delivery site or barcode · pack-size mismatch · unknown unit · non-integer quantities · **line and total amounts that don't match the file** (0.05 THB tolerance) · duplicate PO, or a PO already sent to the ERP
-- **WARN (allowed, review):** delivery site missing in the ERP (falls back to the customer address) · PO number inconsistent with the customer's warehouse code
+- **WARN (allowed, review):** delivery site missing in the ERP (falls back to the customer address) · PO number inconsistent with the customer's warehouse code · **unit price differs from the agreed store price**, with the difference in baht · numbers read by OCR
 - Traps you only find in real files: columns labelled "pieces" that actually hold cases, and files split by branch that would double-count lines
 
 ### Results
-- **17 file formats** from more than 10 customers, across Excel, CSV and PDF
+- **20 file formats** from more than 10 customers, across Excel, CSV and PDF (including OCR for image-based PDFs)
+- Tested on 35 real POs: 31 passed, and the other 4 were correctly held back (missing mapping data or already sent)
+- In use as an invite-only web app, reachable from outside the office
 - Manual retyping replaced by upload → validate → confirm
 - Duplicate POs blocked both within a batch and against orders already sent
 

@@ -53,7 +53,7 @@ flowchart LR
 
 | Project | Problem → Result |
 |---|---|
-| 🧾 [**Purchase-Order Validation → ERP**](projects/02-purchase-order-validation.md) | POs were retyped by hand from many customer formats → **17 formats** read, validated and sent to the ERP after one confirmation |
+| 🧾 [**Purchase-Order Validation → ERP**](projects/02-purchase-order-validation.md) | POs were retyped by hand from many customer formats → **20 formats** (incl. OCR for image PDFs) read, checked against agreed prices, and sent to the ERP after one confirmation |
 | 🔁 [**Monthly Retail Sales Pipeline**](projects/04-retail-sales-pipeline.md) | Monthly files were copy-pasted into the dashboard sheet → one command, **safe to re-run**, no duplicates |
 | 🗄️ [**ERP Sales Data Quality**](projects/03-erp-sales-data-quality.md) | Bad ERP records reached reports unnoticed → repeatable checks before any KPI is built |
 
