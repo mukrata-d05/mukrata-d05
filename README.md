@@ -11,7 +11,6 @@
 
 I work with real operational data at a food manufacturer. I take messy data from the ERP, Google Sheets and customer files, check it for errors, and turn it into dashboards and tools that sales, warehouse, QC and purchasing teams use every day.
 
-ผมทำงานกับข้อมูลจริงในโรงงานผลิตอาหาร นำข้อมูลจาก ERP, Google Sheets และไฟล์ของลูกค้ามาตรวจหาข้อผิดพลาด แล้วทำเป็น Dashboard และเครื่องมือที่ทีมขาย คลัง QC และจัดซื้อใช้ทุกวัน
 
 ## 🧭 What I do · งานที่ผมทำ
 
