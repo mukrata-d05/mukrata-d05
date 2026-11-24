@@ -39,7 +39,7 @@ flowchart LR
 ### ผลลัพธ์
 - Dashboard 2 หน้า คือ Overview (KPI 5 ตัว แนวโน้ม สาเหตุ Pareto และมูลค่าเสียหายรายสินค้า) และรายงานรายวัน (เทียบกับวันก่อนหน้า และยอดสะสมตั้งแต่ต้นเดือน)
 - ตัวกรองช่วงเวลาและกลุ่มสินค้า
-- ใช้งานจริงบน Streamlit Community Cloud
+- Deploy บน Streamlit Community Cloud แล้ว ระหว่างรอเติมราคาสินค้าที่ยังขาดก่อนเปิดใช้ทั้งฝ่าย
 
 ### สิ่งที่ได้เรียนรู้
 Dashboard ที่ดีต้องบอกข้อจำกัดของตัวเองตรงๆ เช่น "ตัวเลขนี้เป็นค่าขั้นต่ำ เพราะของเสีย 17% ยังไม่มีราคา" ผู้ใช้จะได้รู้ว่าตัวเลขเชื่อได้แค่ไหน และรู้ว่าต้องเติมข้อมูลตรงไหน
@@ -80,7 +80,7 @@ flowchart LR
 ### Results
 - Two pages: Overview (5 KPIs, trend, causes, Pareto, baht loss by product) and Daily Report (vs previous day, month-to-date)
 - Date-range and product-group filters
-- In production on Streamlit Community Cloud
+- Deployed on Streamlit Community Cloud; roll-out waits for the missing product prices to be filled in
 
 ### What I learned
 A good dashboard states its own limits, e.g. "this is a minimum because 17% of defective units have no price yet", so users know how far to trust a number and what data still needs filling in.

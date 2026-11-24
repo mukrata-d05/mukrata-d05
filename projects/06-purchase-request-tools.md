@@ -41,9 +41,10 @@ flowchart LR
 | หน้าเว็บวิเคราะห์ | เปลี่ยนจากดึงข้อมูลสดเป็นภาพข้อมูล ณ เวลาหนึ่ง (snapshot) | ใช้งานง่าย และไม่ต้องเปิดการเชื่อมต่อฐานข้อมูลค้างไว้ (ปัจจุบันพักการพัฒนาไว้) |
 
 ### ผลลัพธ์
-- พนักงานเปิดใบขอซื้อผ่านฟอร์มง่ายๆ ได้เอง โดยไม่ต้องเข้าหน้าจอ ERP
-- ผู้อนุมัติได้รับแจ้งเตือนทันทีในแชตที่ใช้อยู่ทุกวัน
-- ทุกคนเห็นสถานะใบขอซื้อในหน้าเดียว
+- **ฟอร์มขอซื้อใช้งานจริงกับพนักงานทุกแผนก** ไม่ต้องเข้าหน้าจอ ERP
+- รุ่นที่ 2 (พ.ย. 2026): ฟอร์มและประวัติรวมในหน้าเดียว ค้นสินค้าและหน่วยนับได้ เติมหน่วยที่ใช้บ่อยให้อัตโนมัติ แนบใบขออนุมัติงบของแผนกได้ คำนวณราคารวมต่อบรรทัดให้เอง และเก็บ log การใช้งานไว้ดูว่ามีคนใช้จริงเท่าไร
+- Kanban และการอนุมัติผ่านแชตทำเสร็จและทดสอบแล้ว แต่ยังไม่ได้เปิดใช้ เพราะทีมเลือกให้การอนุมัติอยู่ใน ERP ตามเดิม
+- หน้าเว็บวิเคราะห์พักไว้
 
 ### สิ่งที่ได้เรียนรู้
 เครื่องมือที่คนใช้จริงคือเครื่องมือที่อยู่ในที่ที่เขาทำงานอยู่แล้ว
@@ -86,9 +87,10 @@ flowchart LR
 | Analysis site | Moved from live queries to a data snapshot | Simpler to run with no open database connection (currently paused) |
 
 ### Results
-- Staff raise PRs through a simple form, without opening the ERP
-- Approvers are notified instantly in the chat they use every day
-- Everyone sees PR status on a single page
+- **The PR form is in production for every department**, with no ERP screens needed
+- Version 2 (Nov 2026): form and history on one page, product and unit search, auto-filled common units, budget-approval attachment by department, automatic line totals, and a usage log to see real adoption
+- The Kanban board and chat approvals were built and tested but not rolled out, because the team chose to keep approvals in the ERP
+- The analysis site is paused
 
 ### What I learned
 People use the tools that live where they already work.

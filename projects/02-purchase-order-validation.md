@@ -23,7 +23,7 @@
 ```mermaid
 flowchart LR
     A["ไฟล์ PO<br/>Excel / CSV / PDF"] --> B["ตรวจหาว่าเป็นไฟล์ของลูกค้ารายไหน<br/>จากชื่อคอลัมน์"]
-    B --> C["ตัวอ่านเฉพาะลูกค้าแต่ละราย<br/>20 รูปแบบ (+OCR)"]
+    B --> C["ตัวอ่านเฉพาะลูกค้าแต่ละราย<br/>32 รูปแบบ (+OCR)"]
     C --> D["รูปแบบข้อมูลกลาง<br/>Order / Line (หน่วยเดียวกัน)"]
     M[("ตารางจับคู่ + ราคาขาย<br/>ลูกค้า / จุดส่ง / สินค้า")] --> E
     D --> E{"ตรวจสอบ<br/>ERR / WARN"}
@@ -50,9 +50,10 @@ flowchart LR
 - กับดักที่ต้องรู้จักไฟล์จริงถึงจะเจอ เช่น คอลัมน์ที่ป้ายเขียนว่า "ชิ้น" แต่ตัวเลขจริงเป็น "หีบ" และไฟล์ที่แตกแถวตามสาขาจนยอดนับซ้ำ
 
 ### ผลลัพธ์
-- รองรับ **20 รูปแบบไฟล์** จากลูกค้ามากกว่า 10 ราย ทั้ง Excel, CSV และ PDF (รวม PDF ที่ต้องใช้ OCR)
+- รองรับ **32 รูปแบบไฟล์** (Excel/CSV 9 แบบ, PDF 23 แบบ) จากลูกค้ามากกว่า 20 ราย รวม PDF ที่ต้องใช้ OCR
 - ทดสอบกับไฟล์ PO จริง 35 ใบ ผ่านการตรวจ 31 ใบ อีก 4 ใบถูกหยุดไว้ถูกต้อง (ข้อมูลจับคู่ยังไม่ครบ หรือเป็น PO ที่ส่งไปแล้ว)
-- ใช้งานจริงผ่านเว็บแบบเชิญเฉพาะอีเมล เปิดจากนอกออฟฟิศได้
+- ใช้งานจริงกับฝ่ายขายผ่านเว็บแบบเชิญเฉพาะอีเมล เปิดจากนอกออฟฟิศได้
+- ต่อมาเพิ่มปุ่มส่งเข้า ERP จากเว็บโดยตรง และเชื่อมกับ [บอทดึง PO จากอีเมล](07-po-email-inbox-bot.md) ให้สถานะอัปเดตกลับเองจาก ERP
 - งานพิมพ์ PO ซ้ำๆ เปลี่ยนเป็นอัปโหลด → ตรวจ → กดยืนยัน
 - กัน PO ซ้ำได้ทั้งในชุดที่อัปโหลดพร้อมกัน และกับ PO ที่เคยส่งเข้า ERP ไปแล้ว
 
@@ -78,7 +79,7 @@ The sales team retyped every PO into the ERP as a sales order, which was slow an
 ```mermaid
 flowchart LR
     A["PO files<br/>Excel / CSV / PDF"] --> B["Detect customer<br/>from column signature"]
-    B --> C["Per-format adapters<br/>20 formats (+OCR)"]
+    B --> C["Per-format adapters<br/>32 formats (+OCR)"]
     C --> D["Common model<br/>Order / Line (one unit)"]
     M[("Mapping + price list<br/>customer / site / product")] --> E
     D --> E{"Validate<br/>ERR / WARN"}
@@ -105,9 +106,10 @@ flowchart LR
 - Traps you only find in real files: columns labelled "pieces" that actually hold cases, and files split by branch that would double-count lines
 
 ### Results
-- **20 file formats** from more than 10 customers, across Excel, CSV and PDF (including OCR for image-based PDFs)
+- **32 file formats** (9 Excel/CSV, 23 PDF) from more than 20 customers, including OCR for image-based PDFs
 - Tested on 35 real POs: 31 passed, and the other 4 were correctly held back (missing mapping data or already sent)
-- In use as an invite-only web app, reachable from outside the office
+- In production with the sales team as an invite-only web app, reachable from outside the office
+- Later added a direct send-to-ERP button and a link to the [PO email inbox bot](07-po-email-inbox-bot.md), with status synced back from the ERP
 - Manual retyping replaced by upload → validate → confirm
 - Duplicate POs blocked both within a batch and against orders already sent
 

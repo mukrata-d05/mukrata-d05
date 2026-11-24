@@ -9,7 +9,7 @@
 
 ----------------------------------------
 
-I work with real operational data at a food manufacturer. I take messy data from the ERP, Google Sheets and customer files, check it for errors, and turn it into dashboards and tools that sales, warehouse, QC and purchasing teams use every day.
+I work with real operational data at a food manufacturer. I take messy data from the ERP, Google Sheets and customer files, check it for errors, and turn it into tools and reports that the sales and purchasing teams, and staff in every department, use every day.
 
 
 ## 🧭 What I do · งานที่ผมทำ
@@ -52,7 +52,7 @@ flowchart LR
 
 | Project | Problem → Result |
 |---|---|
-| 🧾 [**Purchase-Order Validation → ERP**](projects/02-purchase-order-validation.md) | POs were retyped by hand from many customer formats → **20 formats** (incl. OCR for image PDFs) read, checked against agreed prices, and sent to the ERP after one confirmation |
+| 🧾 [**Purchase-Order Validation → ERP**](projects/02-purchase-order-validation.md) | POs were retyped by hand from many customer formats → **32 formats** from 20+ customers (incl. OCR for image PDFs) read, checked against agreed prices, and sent to the ERP after one confirmation |
 | 🔁 [**Monthly Retail Sales Pipeline**](projects/04-retail-sales-pipeline.md) | Monthly files were copy-pasted into the dashboard sheet → one command, **safe to re-run**, no duplicates |
 | 🗄️ [**ERP Sales Data Quality**](projects/03-erp-sales-data-quality.md) | Bad ERP records reached reports unnoticed → repeatable checks before any KPI is built |
 
@@ -67,7 +67,9 @@ flowchart LR
 
 | Project | Problem → Result |
 |---|---|
-| 🛒 [**Purchase Request Tools**](projects/06-purchase-request-tools.md) | ERP screens were hard for occasional users, and approvers missed waiting requests → a simple form plus a Kanban board, with **approvals in the company chat** |
+| 📥 [**PO Email Inbox Bot**](projects/07-po-email-inbox-bot.md) | PO emails were mixed with invoices and easy to miss → a bot that sorts **7 kinds** of PO email into one shared list, with chat alerts and status synced from the ERP |
+| 🧮 [**Marketplace Orders → Accounting POs**](projects/08-marketplace-orders-to-accounting.md) | Every online purchase was retyped into the accounting software → receipts and screenshots become **draft POs in a few clicks** via the accounting API, with a backlog cleaner |
+| 🛒 [**Purchase Request Tools**](projects/06-purchase-request-tools.md) | ERP screens were hard for occasional users → a simple PR form **used by every department**, plus a Kanban/chat-approval prototype |
 
 ## 🧰 Tools by stage · เครื่องมือตามขั้นตอนงาน
 
@@ -91,4 +93,6 @@ flowchart LR
 ![Odoo](https://img.shields.io/badge/Odoo%20API-%23714B67.svg?style=for-the-badge&logo=Odoo&logoColor=white)
 ![Google Apps Script](https://img.shields.io/badge/Google%20Apps%20Script-%234285F4.svg?style=for-the-badge&logo=Google%20Apps%20Script&logoColor=white)
 ![FastAPI](https://img.shields.io/badge/FastAPI-005571?style=for-the-badge&logo=fastapi)
+![Chrome Extension](https://img.shields.io/badge/Chrome%20Extension-4285F4?style=for-the-badge&logo=googlechrome&logoColor=white)
+![Tesseract OCR](https://img.shields.io/badge/OCR-Tesseract-5A5A5A?style=for-the-badge)
 ![Git](https://img.shields.io/badge/git-%23F05033.svg?style=for-the-badge&logo=git&logoColor=white)
